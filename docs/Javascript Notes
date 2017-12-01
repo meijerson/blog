@@ -1,0 +1,59 @@
+These are the notes I've taken while going through the "Javascript: Understanding the Weird Parts" course on Udemy.
+
+Lecture 6:
+Syntax Parser: A program that reads your code and determines what it does and if its grammar is valid.
+Lexical Environment: Where something sits physically in the code you write.
+Execution Context: A wrapper to help manage the code that is running.
+
+Lecture 7:
+Object: A collection of name/value pairs.
+
+Lecture 9:
+Global: Not inside a function.
+The execution contexts creates two things for you:
+    The Global Object
+    'this'
+but yet contains two more things:
+    Your code
+    The outer environment (the global object has no outer environment - it is as far out as you can go)
+    
+Lecture 12:
+In the execution of code, first there is a creation phase which goes through and declares each variable and function from top to bottom. Then, it goes through again and initializes everything as it comes across it.
+Example:
+    console.log(a);
+    var a = 'Hello world!';
+    console.log(a);
+This will output "undefined", "Hello world!" because by the time we reach the first log, a already exists and is set to undefined by default. If there was no "var a.." in this code then a reference error would be thrown instead of it becoming undefined.
+
+Lecture 13:
+Single Threaded: One command at a time
+Synchronous: One at a time, and in order
+
+Lecture 14:
+Invocation: Running a function
+
+When a function in invoked (called), then it creates a new execution context and is placed on what is called the "execution stack". Whichever execution context is on the top of the stack is the once that is currently running.
+
+Each execution context does what I mentioned in my notes from lecture 12: each one first goes through the create phase, and then execute phase.
+
+When an execution context is finished (a function reaches its end curly bracket), then the execution context is "popped off" of the execution stack.
+
+Side additional note- each time an execution context is created, a 'this' keyword is also created for that context.
+
+Lecture 15:
+Variable Environment: Where the variables live and how they relate to each other in memory
+
+Lecture 16:
+Where a function sits determines its outer environment reference. if b() is created inside a(), then a's variable environment becomes b's outer environment reference. In this case, if a variable is not found inside 'b', 'a' will be searched next, and if not found, then the global context will be searched.
+
+Lecture 17:
+Scope: Where a variable is available in your code
+
+the 'let' keyword is like var in that you can use it to declare variables, BUT it is different in that when used, their variables are not looked at/recognized/space is not set aside during the creation phase. Instead, the variables are set up only in the execution phase (when the code is actually being run line by line).
+
+Additionally, 'let' uses block scoping. This means that when 'let' is used in ANY block (if, for, while blocks) then that is the variable's scope.
+
+Lecture 18:
+Asynchronous: More than one at a time
+
+
